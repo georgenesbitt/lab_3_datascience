@@ -34,7 +34,7 @@ glimpse(nobel_living)
 
 
 ### Exercise 3
-```{r}
+```{r visualization 1}
 nobel_living <- nobel_living %>%
   mutate(
     country_us = if_else(country == "USA", "USA", "Other")
@@ -52,7 +52,7 @@ There were more nobel laurates that won their prizes in the US than in other cou
 almost primarily in the United States. This supports the Buzzfeed headline. 
 
 ### Exercise 4
-```{r}
+```{r new variable}
 nobel_living <- nobel_living %>%
   mutate(
     born_country_us = if_else(born_country == "USA", "USA", "Other")
@@ -67,7 +67,7 @@ There are 105 living nobel laureates born in the United States.
 ...
 
 ### Exercise 5
-```{r}
+```{r visualization 2}
 ggplot(
   data = nobel_living,
   mapping = aes(x = country_us, fill = born_country_us)
@@ -80,5 +80,12 @@ Based on this visualization, it appears that, compared to the data we found from
 ...
 
 ### Exercise 6
+```{r new filter for non US born American laureates}
+nobel_living %>%
+  filter(country_us == "USA", born_country !="USA") %>%
+  count(born_country) %>%
+  arrange(desc(n))
+```
 
+The countries that are the most common are Germany and the UK. 
 ...

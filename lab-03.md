@@ -110,7 +110,7 @@ nobel_living_science <- nobel_living %>%
 ggplot(data=nobel_living_science, mapping=aes(y=category))+geom_bar()+facet_wrap(~country_us)
 ```
 
-![](lab-03_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](lab-03_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 There were more nobel laurates that won their prizes in the US than in
 other countries. Specifically, economists were almost primarily in the
@@ -151,12 +151,34 @@ ggplot(
   facet_wrap(~ category)
 ```
 
-![](lab-03_files/figure-gfm/unnamed-chunk-6-1.png)<!-- --> Based on this
-visualization, it appears that, compared to the data we found from ex 3,
-Buzzfeed’s claim that of US-based Nobel laureates, many were born in
-other countries is true. It does appear that for the most part, there
+![](lab-03_files/figure-gfm/visualization%202-1.png)<!-- --> Based on
+this visualization, it appears that, compared to the data we found from
+ex 3, Buzzfeed’s claim that of US-based Nobel laureates, many were born
+in other countries is true. It does appear that for the most part, there
 are more international-born Nobel laureates than US laureates. …
 
 ### Exercise 6
 
-…
+``` r
+nobel_living %>%
+  filter(country_us == "USA", born_country !="USA") %>%
+  count(born_country) %>%
+  arrange(desc(n))
+```
+
+    ## # A tibble: 21 × 2
+    ##    born_country       n
+    ##    <chr>          <int>
+    ##  1 Germany            7
+    ##  2 United Kingdom     7
+    ##  3 China              5
+    ##  4 Canada             4
+    ##  5 Japan              3
+    ##  6 Australia          2
+    ##  7 Israel             2
+    ##  8 Norway             2
+    ##  9 Austria            1
+    ## 10 Finland            1
+    ## # ℹ 11 more rows
+
+The countries that are the most common are Germany and the UK. …
