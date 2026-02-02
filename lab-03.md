@@ -118,11 +118,44 @@ United States. This supports the Buzzfeed headline.
 
 ### Exercise 4
 
+``` r
+nobel_living <- nobel_living %>%
+  mutate(
+    born_country_us = if_else(born_country == "USA", "USA", "Other")
+  )
+```
+
+``` r
+nobel_living%>%
+count(born_country_us)
+```
+
+    ## # A tibble: 2 × 2
+    ##   born_country_us     n
+    ##   <chr>           <int>
+    ## 1 Other             123
+    ## 2 USA               105
+
+There are 105 living nobel laureates born in the United States.
+
 …
 
 ### Exercise 5
 
-…
+``` r
+ggplot(
+  data = nobel_living,
+  mapping = aes(x = country_us, fill = born_country_us)
+) +
+  geom_bar() +
+  facet_wrap(~ category)
+```
+
+![](lab-03_files/figure-gfm/unnamed-chunk-6-1.png)<!-- --> Based on this
+visualization, it appears that, compared to the data we found from ex 3,
+Buzzfeed’s claim that of US-based Nobel laureates, many were born in
+other countries is true. It does appear that for the most part, there
+are more international-born Nobel laureates than US laureates. …
 
 ### Exercise 6
 
