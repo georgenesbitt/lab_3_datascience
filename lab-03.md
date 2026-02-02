@@ -106,6 +106,16 @@ nobel_living_science <- nobel_living %>%
   filter(category %in% c("Physics", "Medicine", "Chemistry", "Economics"))
 ```
 
+``` r
+ggplot(data=nobel_living_science, mapping=aes(y=category))+geom_bar()+facet_wrap(~country_us)
+```
+
+![](lab-03_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+There were more nobel laurates that won their prizes in the US than in
+other countries. Specifically, economists were almost primarily in the
+United States. This supports the Buzzfeed headline.
+
 ### Exercise 4
 
 …
